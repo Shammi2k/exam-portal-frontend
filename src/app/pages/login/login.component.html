@@ -1,1 +1,30 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <mat-card class="p20 m20">
+                    <div class="container text-center mt20">
+                        <img src="images/signup_logo.png" height="100rem">
+                    </div>
+                    <h2 class="text-center">Login</h2>
+                    <form (ngSubmit)="onLogin()">
+                        <!-- Username field -->
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Username</mat-label>
+                            <input required matInput name="username" placeholder="Enter Here">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" class="full-width">
+                            <mat-label>Password</mat-label>
+                            <input required type="password" name="password" matInput placeholder="Enter Here">
+                        </mat-form-field>
+                        <mat-card-actions>
+                            <div class="container text-center mt20">
+                                <button mat-flat-button color="primary" type="submit" class="br10">Login</button>
+                            </div>
+                        </mat-card-actions>
+                    </form>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

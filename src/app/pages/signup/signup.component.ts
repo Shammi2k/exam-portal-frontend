@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { Observer } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
+import { MatCardModule } from '@angular/material/card';
 
 
 @Component({
@@ -17,7 +18,8 @@ import Swal from 'sweetalert2';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatCardModule
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
