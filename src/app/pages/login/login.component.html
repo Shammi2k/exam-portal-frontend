@@ -11,11 +11,13 @@
                         <!-- Username field -->
                         <mat-form-field appearance="outline" class="full-width">
                             <mat-label>Username</mat-label>
-                            <input required matInput name="username" placeholder="Enter Here">
+                            <input [(ngModel)]="userdetails.username" required matInput name="username"
+                                placeholder="Enter Here">
                         </mat-form-field>
                         <mat-form-field appearance="outline" class="full-width">
                             <mat-label>Password</mat-label>
-                            <input required type="password" name="password" matInput placeholder="Enter Here">
+                            <input [(ngModel)]="userdetails.password" required type="password" name="password" matInput
+                                placeholder="Enter Here">
                         </mat-form-field>
                         <mat-card-actions>
                             <div class="container text-center mt20">

@@ -5,6 +5,7 @@ export class User {
     public lastName: string;
     public email: string;
     public phone: string;
+    public authorities: Array<any>;
     constructor() {
         this.username = '';
         this.password = '';
@@ -12,5 +13,6 @@ export class User {
         this.lastName = '';
         this.email = '';
         this.phone = '';
+        this.authorities = [];
     }
 }
