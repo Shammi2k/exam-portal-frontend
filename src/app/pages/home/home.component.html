@@ -1,9 +1,30 @@
 <div class="bootstrap-wrapper">
-    <div class="container">
-        <div class="row mt20">
-            <div class="col-md-6 offset-md-3 text-center">
-                <h2>Welcome to Exam Portal</h2>
+    <div>
+        <div class="hero row">
+            <div class="hero-content">
+                <div class="col-sm-6">
+                    <h2>Welcome to the Exam Portal</h2>
+                    <p>Your one-stop destination for online exams and assessments.</p>
+                    <button *ngIf="!isLoggedIn" (click)="navigateToLogin()" class="btn btn-primary">Get
+                        Started</button>
+                    <button *ngIf="isLoggedIn" (click)="navigateToDashboard()" class="btn btn-secondary">Go to
+                        Dashboard</button>
+                </div>
             </div>
         </div>
+        <section class="features row">
+            <div class="feature-card col-md-4">
+                <h3>Wide Range of Exams</h3>
+                <p>Explore various subjects and topics with our comprehensive list of exams.</p>
+            </div>
+            <div class="feature-card col-md-4">
+                <h3>Secure and Reliable</h3>
+                <p>Experience a secure and reliable platform with advanced security measures.</p>
+            </div>
+            <div class="feature-card col-md-4">
+                <h3>Instant Results</h3>
+                <p>Get your results immediately after completing the exam.</p>
+            </div>
+        </section>
     </div>
 </div>

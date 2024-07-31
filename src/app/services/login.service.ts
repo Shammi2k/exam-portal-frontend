@@ -4,6 +4,8 @@ import { UserDetails } from '../models/userdetails.model';
 import baseUrl from '../helper';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Router } from '@angular/router';
+import { Role } from '../models/role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class LoginService {
 
   public loginSubject: Subject<boolean>;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.loginSubject = new BehaviorSubject<boolean>(this.isUserLogged());
   }
 
@@ -68,5 +70,19 @@ export class LoginService {
     }
     const userRole: string = this.getAuthority(user);
     return role == userRole;
+  }
+
+  public navigateToDashboard(): boolean {
+    if (this.checkRoleForCurrentUser(Role.ADMIN)) {
+      this.router.navigate(['/admin-dashboard']);
+    }
+    else if (this.checkRoleForCurrentUser(Role.NORMAL)) {
+      this.router.navigate(['/user-dashboard']);
+    }
+    else {
+      this.router.navigate(['/access-denied']);
+      return false;
+    }
+    return true;
   }
 }

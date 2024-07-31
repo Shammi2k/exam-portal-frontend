@@ -48,15 +48,7 @@ export class LoginComponent {
     const currentUserObserver: Observer<any> = {
       next: (user: User) => {
         this.loginService.setUser(user);
-        if (this.loginService.checkRoleForCurrentUser(Role.ADMIN)) {
-          this.router.navigate(['/admin-dashboard']);
-        }
-        else if (this.loginService.checkRoleForCurrentUser(Role.NORMAL)) {
-          this.router.navigate(['/user-dashboard']);
-        }
-        else {
-          this.router.navigate(['/access-denied']);
-        }
+        this.loginService.navigateToDashboard();
       },
       error: error => {
         console.log(error);
