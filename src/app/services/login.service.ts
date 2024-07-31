@@ -23,7 +23,7 @@ export class LoginService {
     localStorage.setItem('token', token);
   }
 
-  public isUserLogged() {
+  public isUserLogged(): boolean {
     if (this.getToken() == undefined || this.getToken() == null || this.getToken() == '') {
       return false;
     }

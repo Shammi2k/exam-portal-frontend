@@ -4,6 +4,13 @@
     </a>
     <span>Exam Portal</span>
     <span class="example-spacer"></span>
-    <a routerLink="/login" class="mr20 link-cleaner" aria-label="go to login">Login</a>
-    <a routerLink="/signup" class="mr20 link-cleaner" aria-label="go to register">Register</a>
+    <!-- Icons when no user is logged in -->
+    <a *ngIf="!isLoggedIn()" routerLink="/login" class="mr20 link-cleaner" aria-label="go to login">Login</a>
+    <a *ngIf="!isLoggedIn()" routerLink="/signup" class="mr20 link-cleaner" aria-label="go to registration">Register</a>
+    <!-- Icons when user is logged in -->
+    <a *ngIf="isLoggedIn()" class="mr20 link-cleaner" aria-label="user details"
+        [mat-menu-trigger-for]="menu">{{getUser()?.username}}</a>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()" class="mr20" aria-label="logout">Logout</button>
+    </mat-menu>
 </mat-toolbar>

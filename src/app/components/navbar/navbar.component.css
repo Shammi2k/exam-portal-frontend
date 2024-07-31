@@ -12,4 +12,5 @@
 .link-cleaner {
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
