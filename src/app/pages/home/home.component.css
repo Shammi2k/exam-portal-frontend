@@ -1,29 +1,7 @@
 /* src/app/home/home.component.css */
-.home-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #333;
-    padding: 10px 20px;
-    color: white;
-}
-
-.logo h1 {
-    margin: 0;
-}
-
-.navbar ul li a:hover {
-    background-color: #555;
-}
-
 .hero {
     background: url('/images/hero.jpg') no-repeat center center/cover;
-    padding: 9% 20px;
+    padding: 10% 20px;
 }
 
 .hero-content {
