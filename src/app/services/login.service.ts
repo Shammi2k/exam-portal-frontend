@@ -3,13 +3,17 @@ import { Injectable } from '@angular/core';
 import { UserDetails } from '../models/userdetails.model';
 import baseUrl from '../helper';
 import { User } from '../models/user.model';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
-  constructor(private http: HttpClient) { }
+  public loginSubject: Subject<boolean>;
+  constructor(private http: HttpClient) {
+    this.loginSubject = new BehaviorSubject<boolean>(this.isUserLogged());
+  }
 
   public generateToken(userdetails: UserDetails) {
     return this.http.post(`${baseUrl}/generate-token`, userdetails);
@@ -33,6 +37,7 @@ export class LoginService {
   public logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.loginSubject.next(false);
   }
 
   public getToken() {
@@ -49,6 +54,7 @@ export class LoginService {
 
   public setUser(user: User) {
     localStorage.setItem('user', JSON.stringify(user));
+    this.loginSubject.next(true);
   }
 
   public getAuthority(user: User): string {

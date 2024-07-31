@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { Router, RouterModule } from '@angular/router';
@@ -20,20 +20,22 @@ import { MatMenuModule } from '@angular/material/menu';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
+
+  isLoggedIn: boolean = false;
+  user: User | null = null;
 
   constructor(private loginService: LoginService, private router: Router) { }
 
-  isLoggedIn(): boolean {
-    return this.loginService.isUserLogged();
+  ngOnInit(): void {
+    this.loginService.loginSubject.asObservable().subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+      this.user = this.loginService.getUser();
+    })
   }
 
   logout() {
     this.loginService.logout();
     this.router.navigate(['login']);
-  }
-
-  getUser(): User | null {
-    return this.loginService.getUser();
   }
 }
