@@ -10,6 +10,8 @@ import { LoginService } from '../../services/login.service';
 import { Observer } from 'rxjs';
 import { LoginResponse } from '../../models/loginresponse.model';
 import { User } from '../../models/user.model';
+import { Router } from '@angular/router';
+import { Role } from '../../models/role.model';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +30,7 @@ export class LoginComponent {
 
   public userdetails = new UserDetails();
 
-  constructor(private loginService: LoginService, private _snackBar: MatSnackBar) { }
+  constructor(private loginService: LoginService, private _snackBar: MatSnackBar, private router: Router) { }
 
   public onLogin() {
     const config: MatSnackBarConfig = {
@@ -46,7 +48,15 @@ export class LoginComponent {
     const currentUserObserver: Observer<any> = {
       next: (user: User) => {
         this.loginService.setUser(user);
-        console.log(user);
+        if (this.loginService.checkRoleForCurrentUser(Role.ADMIN)) {
+          this.router.navigate(['/admin-dashboard']);
+        }
+        else if (this.loginService.checkRoleForCurrentUser(Role.NORMAL)) {
+          this.router.navigate(['/user-dashboard']);
+        }
+        else {
+          this.router.navigate(['/access-denied']);
+        }
       },
       error: error => {
         console.log(error);
@@ -64,6 +74,7 @@ export class LoginComponent {
       },
       error: error => {
         console.log(error);
+        this._snackBar.open('Login failed', 'Close', config);
       },
       complete: () => {
         console.log("Login token generated");

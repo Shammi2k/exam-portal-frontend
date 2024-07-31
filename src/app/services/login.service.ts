@@ -39,7 +39,7 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  public getUser() {
+  public getUser(): User | null {
     const userStr = localStorage.getItem('user');
     if (userStr) {
       return JSON.parse(userStr);
@@ -51,7 +51,16 @@ export class LoginService {
     localStorage.setItem('user', JSON.stringify(user));
   }
 
-  public getAuthority(user: User) {
-    user.authorities[0].authority;
+  public getAuthority(user: User): string {
+    return user.authorities[0].authority;
+  }
+
+  public checkRoleForCurrentUser(role: string): boolean {
+    const user: User | null = this.getUser();
+    if (!user) {
+      return false;
+    }
+    const userRole: string = this.getAuthority(user);
+    return role == userRole;
   }
 }
