@@ -7,6 +7,7 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { RoleGuard } from './role.guard';
 import { AccessDeniedComponent } from './pages/access-denied/access-denied.component';
 import { Role } from './models/role.model';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
     {
@@ -27,16 +28,26 @@ export const routes: Routes = [
     {
         path: "admin-dashboard",
         component: AdminDashboardComponent,
-        pathMatch: 'full',
         canActivate: [RoleGuard],
-        data: { roles: [Role.ADMIN] }
+        data: { roles: [Role.ADMIN] },
+        children: [
+            {
+                path: "profile",
+                component: ProfileComponent
+            }
+        ]
     },
     {
         path: "user-dashboard",
         component: UserDashboardComponent,
-        pathMatch: 'full',
         canActivate: [RoleGuard],
-        data: { roles: [Role.ADMIN, Role.NORMAL] }
+        data: { roles: [Role.ADMIN, Role.NORMAL] },
+        children: [
+            {
+                path: "profile",
+                component: ProfileComponent
+            }
+        ]
     },
     {
         path: "access-denied",

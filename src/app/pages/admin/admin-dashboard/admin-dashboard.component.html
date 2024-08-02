@@ -1,1 +1,6 @@
-<p>admin-dashboard works!</p>
+<div class="side-menu">
+    <app-side-menu [menuItems]="getMenuItems()"></app-side-menu>
+</div>
+<div class="main-content">
+    <router-outlet></router-outlet>
+</div>

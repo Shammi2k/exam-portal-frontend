@@ -1,0 +1,10 @@
+:host {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 8fr;
+    min-width: max-content;
+}
+
+.main-content {
+    padding: 8px;
+}

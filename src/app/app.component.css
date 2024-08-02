@@ -1,0 +1,5 @@
+.full-page {
+    display: grid;
+    grid-template-rows: max-content auto;
+    height: 100%;
+}

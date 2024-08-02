@@ -1,0 +1,10 @@
+<mat-card class="menu-card">
+    <mat-action-list>
+        @for (menuItem of menuItems; track $index) {
+        <button mat-list-item routerLink={{menuItem.route}}>
+            <mat-icon matListItemIcon>{{menuItem.icon}}</mat-icon>
+            <div matListItemTitle>{{menuItem.name}}</div>
+        </button>
+        }
+    </mat-action-list>
+</mat-card>
