@@ -1,0 +1,44 @@
+.profile {
+    padding: 1rem;
+    margin: 1%;
+}
+
+.profile-info {
+    width: 100%;
+    min-width: min-content;
+    font-size: medium;
+    padding: 1rem;
+}
+
+.profile-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    row-gap: 0.5rem;
+    column-gap: 4rem;
+}
+
+.table-label {
+    font-weight: 600;
+    place-self: start;
+    color: rgb(69, 69, 77);
+}
+
+.table-data {
+    place-self: start;
+}
+
+.profile-image {
+    grid-column: span 2;
+    border-radius: 50%;
+    height: 10rem;
+}
+
+.profile-name {
+    grid-column: span 2;
+    margin-bottom: 2.5rem;
+}
+
+.profile-action {
+    margin-top: 2rem;
+}

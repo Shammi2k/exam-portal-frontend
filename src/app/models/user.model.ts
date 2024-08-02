@@ -1,4 +1,5 @@
 export class User {
+    public id: string;
     public username: string;
     public password: string;
     public firstName: string;
@@ -6,7 +7,9 @@ export class User {
     public email: string;
     public phone: string;
     public authorities: Array<any>;
+    public enabled: boolean
     constructor() {
+        this.id = '';
         this.username = '';
         this.password = '';
         this.firstName = '';
@@ -14,5 +17,6 @@ export class User {
         this.email = '';
         this.phone = '';
         this.authorities = [];
+        this.enabled = false;
     }
 }

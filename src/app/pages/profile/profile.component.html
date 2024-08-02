@@ -1,1 +1,25 @@
-<p>profile works!</p>
+<div class="profile" *ngIf="user">
+    <mat-card class="profile-info">
+        <mat-card-content>
+            <div class="profile-table">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg"
+                    alt="Default user" class="profile-image">
+                <h2 class="profile-name">{{user.firstName + ' ' + user.lastName}}</h2>
+                <span class="table-label">Username</span>
+                <span class="table-data">{{user.username}}</span>
+                <span class="table-label">Email</span>
+                <span class="table-data">{{user.email}}</span>
+                <span class="table-label">Phone</span>
+                <span class="table-data">{{user.phone}}</span>
+                <span class="table-label">Role</span>
+                <span class="table-data">{{user && user.authorities ? user.authorities[0].authority : ""}}</span>
+                <span class="table-label">Status</span>
+                <span class="table-data">{{user.enabled ? "ACTIVE" : "INACTIVE"}}</span>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <!-- TODO : Implementation pending -->
+            <button mat-raised-button color="primary" class="profile-action">Update Profile</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
