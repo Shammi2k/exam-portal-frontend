@@ -9,6 +9,8 @@ import { Observer } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { MatCardModule } from '@angular/material/card';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ProblemDetails } from '../../models/problemdetails.exception';
 
 
 @Component({
@@ -46,9 +48,10 @@ export class SignupComponent {
         console.log('User registered successfully', response);
         // Handle successful registration (e.g., navigate to another page or show a success message)
       },
-      error: error => {
-        this._snackBar.open('Error registering user', 'Close', config);
-        console.error('Error registering user', error);
+      error: (error: HttpErrorResponse) => {
+        const problem_details: ProblemDetails = error.error;
+        this._snackBar.open(problem_details.title, 'Close', config);
+        console.error(`Error registering user : ${problem_details.title}`, error);
         // Handle registration error
       },
       complete: () => {
