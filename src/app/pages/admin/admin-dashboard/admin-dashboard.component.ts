@@ -19,7 +19,9 @@ export class AdminDashboardComponent {
   getMenuItems(): Array<SideMenuItem> {
     return Array.from([
       new SideMenuItem("home", "Home", "/admin-dashboard"),
-      new SideMenuItem("person", "Profile", "/admin-dashboard/profile")
+      new SideMenuItem("person", "Profile", "/admin-dashboard/profile"),
+      new SideMenuItem("category", "Categories", "/admin-dashboard/profile"),
+      new SideMenuItem("quiz", "Quizzes", "/admin-dashboard/profile"),
     ]);
   }
 }

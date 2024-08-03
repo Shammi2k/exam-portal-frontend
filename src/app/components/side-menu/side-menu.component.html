@@ -6,5 +6,10 @@
             <div matListItemTitle>{{menuItem.name}}</div>
         </button>
         }
+
+        <button mat-list-item (click)="logout()">
+            <mat-icon matListItemIcon>logout</mat-icon>
+            <div matListItemTitle>Logout</div>
+        </button>
     </mat-action-list>
 </mat-card>
