@@ -95,3 +95,9 @@ body {
 .no-bg {
     background: none !important;
 }
+
+@media print {
+    body {
+        visibility: hidden;
+    }
+}

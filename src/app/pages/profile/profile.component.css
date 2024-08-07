@@ -42,3 +42,14 @@
 .profile-action {
     margin-top: 2rem;
 }
+
+@media print {
+    .profile-table {
+        visibility: visible;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border: 1px solid gray;
+        padding: 1rem;
+    }
+}

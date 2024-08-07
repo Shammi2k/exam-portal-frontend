@@ -22,4 +22,8 @@ export class ProfileComponent {
   constructor(loginService: LoginService) {
     this.user = loginService.getUser();
   }
+
+  printDiv() {
+    window.print();
+  }
 }
